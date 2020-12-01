@@ -30,11 +30,13 @@ class AttendanceController extends Controller
             $attendance->save();
             
         }
-        return redirect()->back();
+        echo "Attendance Sucessfully Saved";
+        // return redirect()->back();
     }
 
     public function  get(Request $request){
         
+        // dd($request);
         // dd($request);
         $std=Student::where('complete','0');
         if($request->has('program')){
