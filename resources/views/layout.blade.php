@@ -67,6 +67,7 @@
                 <ul class="ml-menu">
                     <li><a href="{{route('students.add')}}">Add New</a></li>
                     <li><a href="{{route('students')}}">List</a></li>
+                    <li><a href="{{route('attendances')}}">Attendance</a></li>
                 
                 </ul>
             </li>
