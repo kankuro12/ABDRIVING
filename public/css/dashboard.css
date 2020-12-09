@@ -1,0 +1,29 @@
+.dashboard .section {
+  background: #b70000;
+  border: 1px solid white;
+  min-height: 200px;
+  cursor: pointer;
+}
+
+.dashboard .section h2 {
+  color: white;
+  margin: 40px;
+  text-align: center;
+}
+
+.dashboard .section h2 .fas {
+  font-size: 60px;
+  display: block;
+}
+
+.dashboard .section h2 span {
+  margin-top: 5px;
+  font-size: 25px;
+  font-weight: 800;
+  display: block;
+}
+
+.dashboard .section:hover {
+  background: #a00000;
+}
+/*# sourceMappingURL=dashboard.css.map */

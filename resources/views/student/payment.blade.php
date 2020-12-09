@@ -1,7 +1,15 @@
-<div class="pt-3 pb-3">
-    <hr>
+<style>
+    .nb{
+        border:none;
+        padding:1px !important;
+    }
+    .nb:focus, .nb:active , .nb:hover{
+        border:1px solid #7e7e7e;
+    }
+</style>
+<div class="p-3 shadow">
     <h3 style="font-weight:800">
-        Payments (Balance : Rs.{{$std->balance}})
+        Payments (Remaning Balance : Rs.{{$std->balance}})
     </h3>
     <hr>
     <form  method="post" action="{{route('payments.add')}}">
@@ -10,20 +18,29 @@
         <div class="row">
             <input type="hidden" name="student_id" value="{{$std->id}}">
             <div class="col-md-2">
-                <input type="text" name="billno" id="billno" class="form-control" placeholder="Bill No">
-            </div>
-            <div class="col-md-4">
-                <input type="number" name="amount" id="amount" min="1" max="{{$std->balance}}" required class="form-control" placeholder="Amount">
-            </div>
-            <div class="col-md-4">
-                <input type="text" name="date" id="p-date"  required class="form-control" placeholder="Payment Date">
+                <label >Bill No</label>
+                <input type="text" name="billno" id="billno" class="form-control" placeholder="Bill No" required>
             </div>
             <div class="col-md-2">
+                <label for="">Amount</label>
+                <input type="number" max="{{$std->balance}}" name="amount" id="amount" min="1" required class="form-control" placeholder="Amount" required>
+            </div>
+            <div class="col-md-2">
+                <label for="">Date</label>
+                <input type="text" name="date" id="p-date"  required class="form-control" placeholder="Payment Date" required>
+            </div>
+            <div class="col-md-4">
+                <label for="">Next Payment After</label>
+                <input type="text" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
+            </div>
+            <div class="col-md-2">
+                <label for="">Action</label>
+
                 <input type="submit" value="Add Payment" class="btn btn-primary">
             </div>
         </div>
     </form>
-    <hr>
+
     <table class="table">
         <tr>
             <th>RefNo</th>
@@ -50,19 +67,19 @@
                     {{$pay->id}}
                 </td>
                 <td>
-                    <input type="text" name="billno" id="billno-{{$pay->id}}" value="{{$pay->billno}}">
+                    <input class="form-control nb" type="text" name="billno" id="billno-{{$pay->id}}" value="{{$pay->billno}}">
 
                 </td>
                 <td>
-                    <input type="text" name="date" id="p-date-{{$pay->id}}" value="{{$pay->date}}">
+                    <input class="form-control nb" type="text" name="date" id="p-date-{{$pay->id}}" value="{{$pay->date}}">
                     
                 </td>
                 <td>
-                    <input type="number" name="amount" id="amount-{{$pay->id}}" value="{{$pay->amount}}">
+                    <input class="form-control nb" type="number" name="amount" id="amount-{{$pay->id}}" value="{{$pay->amount}}">
                     
                 </td>
                 <td>
-                    <input type="submit" value="Update" class="btn btn-primary">
+                    <input type="submit" value="Update" class="btn btn-primary btn-sm m-0">
                     {{-- <a href="{{route('payments.del',['pay'=>$pay->id])}}" class="btn btn-danger">Delete</a> --}}
                 </td>
                

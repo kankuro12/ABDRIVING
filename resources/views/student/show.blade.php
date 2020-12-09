@@ -4,13 +4,15 @@
     <link rel="stylesheet" href="{{asset('css/nepali.datepicker.v3.2.min.css')}}">
 @endsection
 @section('content')
-<div class="mt-4 mb-4">
-    @include('student.edit',['std'=>$std])
-</div>
-<div>
+<div class="">
     @include('student.payment',['std'=>$std])
 
 </div>
+
+<div class=" mb-4">
+    @include('student.edit',['std'=>$std])
+</div>
+
 @endsection
 @section('js')
     <script src="{{asset('js/nepali.datepicker.v3.2.min.js')}}"></script>

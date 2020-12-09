@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
+
 class PaymentController extends Controller
 {
     public function add(Request $request){
@@ -14,14 +16,20 @@ class PaymentController extends Controller
             "student_id"=>"required|integer"
         ]);
 
+        $std=Student::find($request->student_id);
         $pay=new Payment();
         $pay->amount=$request->amount;
         $pay->date=$request->date;
         $pay->billno=$request->billno;
+        $pay->student_id=$std->id;
+        $pay->currentattendance=$std->attendances->count();
+        $pay->nextpayattendance=$request->nextpayment;
+        $pay->user_id=Auth::user()->id;
         $pay->student_id=$request->student_id;
         $pay->save();
 
-        $std=Student::find($pay->student_id);
+        $pay->currentattendance=$std->attendances->count();
+        $pay->nextpayattendance=$request->nextpayment;
         $std->balance=$std->balance-$pay->amount;
         $std->save();
         return redirect()->route('students.show',['std'=>$pay->student_id])->with('message',"Payment Added sucessfully");

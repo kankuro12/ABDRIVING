@@ -42,15 +42,17 @@ class AttendanceController extends Controller
         if($request->has('program')){
             if($request->program!=-11){
 
-                $std=$std->where('Program',$request->program);
+                $std=$std->where('course_id',$request->program);
             }
         }
         if($request->has('time')){
             if($request->time!=-11){
-                $std=$std->where('time',$request->slot);
+                $std=$std->where('slot_id',$request->time);
             }
         }
 
+        // dd($std);
+        // dd($request);
         $at_arr=[];
         if($request->has('date')){
             if($request->date!=null){

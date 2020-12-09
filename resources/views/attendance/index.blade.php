@@ -18,7 +18,7 @@
                         <option value="-11">Select A Program</option>
     
                         @foreach (\App\Models\Course::all() as $course)
-                            <option value="{{$course->name}}">
+                            <option value="{{$course->id}}">
                                 {{$course->name}}
                             </option>
                         @endforeach
@@ -30,7 +30,7 @@
                     <select name="time" id="time" class="form-control">
                             <option value="-11">Select Shift</option>
                             @foreach (\App\Models\Slot::all() as $slot)
-                                <option value="{{$slot->time}}">
+                                <option value="{{$slot->id}}">
                                     {{$slot->time}}
                                 </option>
                             @endforeach

@@ -18,9 +18,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard','DashboardController@index')->name('dashboard');
 
     Route::prefix('students')->group(function(){
         Route::get('/', 'StudentController@index')->name('students');
@@ -55,5 +53,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('/get', 'AttendanceController@get')->name('attendances.get');
     });
 
-    
+    Route::prefix('users')->group(function(){
+        route::get('/','UserController@index')->name('users');
+        route::post('/add','UserController@add')->name('users.add');
+        route::post('/edit/{user}','UserController@edit')->name('users.edit');
+        route::post('/cedit','UserController@changepass')->name('users.pass');
+        
+    });
 });

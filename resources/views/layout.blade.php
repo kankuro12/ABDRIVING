@@ -2,20 +2,21 @@
 <html class="no-js " lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>@yield('title')</title>
-<!-- Favicon-->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
-@yield('css')
-<!-- Custom Css -->
-<link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
-    {{-- @include('css') --}}
+    <title>@yield('title')</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
+    @yield('css')
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
+    @include('css')
+    <script src="https://kit.fontawesome.com/4ea06e897a.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="theme-blush">
@@ -94,8 +95,10 @@
 
 <!-- Main Content -->
 <section class="content">
+    
     <div class="body_scroll">
         <div class="block-header">
+           
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>@yield('title')</h2>
@@ -146,11 +149,16 @@
 <script src="{{asset('assets/bundles/vendorscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js --> 
 <script>
     $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.href').click(function(){
+        window.location.href=$(this).data('target');
+    });
 </script>
+<script src="{{asset('assets\js\pages\ui\notifications.js')}}"></script>
+<script src="{{asset('assets\plugins\bootstrap-notify\bootstrap-notify.js')}}"></script>
 @yield('js')
 <script src="{{asset('assets/bundles/mainscripts.bundle.js')}}"></script>
 

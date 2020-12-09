@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Payment;
+use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     public function add(Request $request){
@@ -29,14 +31,33 @@ class StudentController extends Controller
             $std->fmember    =$request->fmember    ;
             $std->dealamount    =$request->dealamount    ;
             $std->balance    =$request->dealamount    ;
-            $std->time     =$request->time     ;
+            $std->time     =$request->time??"";
             $std->startfrom    =$request->startfrom    ;
-            $std->Program    =$request->Program    ;
+            $std->Program    =$request->Program??""    ;
+            $std->course_id=$request->course_id;
+            $std->slot_id=$request->slot_id;
+            $std->nextpayattendance=$request->nextpayment;
             if($request->hasFile('image')){
                 $std->image=$request->image->store('data');
             }
             $std->save();
-            return redirect()->route('students.show',['std'=>$std->id])->with('message',"Student Added Sucessfully");
+
+            $pay=new Payment();
+            $pay->amount=$request->amount;
+            $pay->date=$request->date;
+            $pay->billno=$request->billno;
+            $pay->student_id=$std->id;
+            $pay->currentattendance=0;
+            $pay->nextpayattendance=$request->nextpayment;
+            $pay->user_id=Auth::user()->id;
+            $pay->save();
+
+          
+            $std->balance=$std->balance-$pay->amount;
+            $std->save();
+
+            return redirect()->route('students');
+            // return redirect()->route('students.show',['std'=>$std->id])->with('message',"Student Added Sucessfully");
 
         }else{
             return view('student.add');
@@ -72,9 +93,12 @@ class StudentController extends Controller
             $std->fmember    =$request->fmember    ;
             $std->dealamount    =$request->dealamount    ;
             $std->balance    =$request->dealamount    ;
-            $std->time     =$request->time     ;
+            $std->time     =$request->time??""     ;
             $std->startfrom    =$request->startfrom    ;
-            $std->Program    =$request->Program    ;
+            $std->Program    =$request->Program  ??""  ;
+            $std->course_id=$request->course_id;
+            $std->slot_id=$request->slot_id;
+        
             if($request->hasFile('image')){
                 $std->image=$request->image->store('data');
             }

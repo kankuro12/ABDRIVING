@@ -1,0 +1,26 @@
+.dashboard{
+    .section{
+        background:#b70000;
+        border:1px solid white;
+        min-height:200px;
+        cursor: pointer;
+        h2{
+           color:white;
+            margin:40px;
+            text-align:center;
+            .fas{
+                font-size:60px;
+                display: block;
+            }
+            span{
+                margin-top:5px;
+                font-size: 25px; 
+                font-weight:800;
+                display: block;
+            }
+        }
+    }
+    .section:hover{
+        background:#a00000;
+    }
+}

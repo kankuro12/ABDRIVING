@@ -49,10 +49,10 @@
                             {{$std->phone}}
                         </td>
                         <td>
-                            {{$std->Program}}
+                            {{$std->course->name}}
                         </td>
                         <td>
-                            {{$std->time}}
+                            {{$std->slot->time}}
                         </td>
                         <td>
                             {{$std->balance}}

@@ -23,9 +23,9 @@
             <div class="col-md-9">
                 <div class="form-group">
                     <label for="Program">Program</label>
-                    <select name="Program" id="program" class="form-control" required>
+                    <select name="course_id" id="program" class="form-control" required>
                         @foreach (\App\Models\Course::all() as $course)
-                            <option value="{{$course->name}}">
+                            <option value="{{$course->id}}">
                                 {{$course->name}}
                             </option>
                         @endforeach
@@ -37,9 +37,9 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="shift">Shift</label>
-                    <select name="time" id="time" class="form-control">
+                    <select name="slot_id" id="time" class="form-control">
                         @foreach (\App\Models\Slot::all() as $slot)
-                            <option value="{{$slot->time}}">
+                            <option value="{{$slot->id}}">
                                 {{$slot->time}}
                             </option>
                         @endforeach
@@ -176,6 +176,31 @@
                 </div>
             </div>
             <div class="col-md-12">
+                <hr>
+                <h3 style="font-weight: 800;margin-bottom:5px;">
+                    First Payment
+                </h3>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label >Bill No</label>
+                        <input type="text" name="billno" id="billno" class="form-control" placeholder="Bill No" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">Amount</label>
+                        <input type="number" name="amount" id="amount" min="1" required class="form-control" placeholder="Amount" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">Date</label>
+                        <input type="text" name="date" id="p-date"  required class="form-control" placeholder="Payment Date" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Next Payment After</label>
+                        <input type="text" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-12">
                 <div class="form-group">
                     <hr>
                     <input type="submit" value="Add Student" class="btn btn-primary">
@@ -202,7 +227,11 @@
                 ndpYear: true,
                 ndpMonth: true,
             });
-
+            date=document.getElementById('p-date');
+            date.nepaliDatePicker({
+                ndpYear: true,
+                ndpMonth: true,
+            });
             $('#dob').on("input",function(){
                 
             });
