@@ -1,9 +1,14 @@
-@extends('layout');
+@extends('layout')
 @section('title','Student - '.$std->name)
 @section('css')
     <link rel="stylesheet" href="{{asset('css/nepali.datepicker.v3.2.min.css')}}">
 @endsection
 @section('content')
+
+    <h3 class="font-weight-bold">
+        <a href="{{ route('students') }}">Students</a>/{{$std->name}} /Details
+    </h3>
+
 <div class="">
     @include('student.payment',['std'=>$std])
 

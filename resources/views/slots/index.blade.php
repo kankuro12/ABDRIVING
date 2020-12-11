@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 @section('title','Slots')
 @section('content')
 <div class="pb-3 pt-3 pl-3 pr-3">
@@ -8,7 +8,7 @@
                 @csrf
                 <br>
                 <label for="time">time</label>
-                <input type="text" name="time" class="form-control" required> 
+                <input type="text" name="time" class="form-control" required>
                 <br>
                 <input type="submit" value="Add Slot" class="btn btn-primary">
             </form>
@@ -20,7 +20,7 @@
                 <br>
 
                 <label for="time">time</label>
-                <input type="text" name="time" class="form-control" value="{{$slot->time}}" required> 
+                <input type="text" name="time" class="form-control" value="{{$slot->time}}" required>
                 <br>
                 <input type="submit" value="Update Slot" class="btn btn-primary">
                 <a href="{{route('slots.del',['slot'=>$slot->id])}}" class="btn btn-danger">

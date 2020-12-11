@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 @section('title','Attendance')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/nepali.datepicker.v3.2.min.css')}}">
@@ -16,13 +16,13 @@
                     <label for="program">Program</label>
                     <select name="program" id="program" class="form-control" >
                         <option value="-11">Select A Program</option>
-    
+
                         @foreach (\App\Models\Course::all() as $course)
                             <option value="{{$course->id}}">
                                 {{$course->name}}
                             </option>
                         @endforeach
-                       
+
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -34,15 +34,15 @@
                                     {{$slot->time}}
                                 </option>
                             @endforeach
-                            
+
                     </select>
                 </div>
                 <div class="col-md-3">
                     <br>
                     <input type="submit" value="Load Sheet" class="btn btn-primary">
                 </div>
-                
-                
+
+
             </div>
         </form>
     </div>
@@ -59,6 +59,6 @@
             ndpYear: true,
             ndpMonth: true,
         });
-       
+
     </script>
 @endsection

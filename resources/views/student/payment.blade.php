@@ -9,7 +9,11 @@
 </style>
 <div class="p-3 shadow">
     <h3 style="font-weight:800">
-        Payments (Remaning Balance : Rs.{{$std->balance}})
+        Payments (Remaning Balance : Rs.{{$std->balance}}) |
+        @if ($std->complete==0)
+
+        <a href="{{route('students.passout',['std'=>$std->id])}}" class="btn btn-primary btn-sm">Mark As Passout</a>
+        @endif
     </h3>
     <hr>
     <form  method="post" action="{{route('payments.add')}}">
@@ -72,17 +76,17 @@
                 </td>
                 <td>
                     <input class="form-control nb" type="text" name="date" id="p-date-{{$pay->id}}" value="{{$pay->date}}">
-                    
+
                 </td>
                 <td>
                     <input class="form-control nb" type="number" name="amount" id="amount-{{$pay->id}}" value="{{$pay->amount}}">
-                    
+
                 </td>
                 <td>
                     <input type="submit" value="Update" class="btn btn-primary btn-sm m-0">
                     {{-- <a href="{{route('payments.del',['pay'=>$pay->id])}}" class="btn btn-danger">Delete</a> --}}
                 </td>
-               
+
             </tr>
         @endforeach
     </table>

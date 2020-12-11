@@ -56,7 +56,7 @@
                     <div class="detail">
 
                         <h4>{{Auth::user()->name}}</h4>
-                        <small>{{Auth::user()->email}}</small>                        
+                        <small>{{Auth::user()->email}}</small>
                     </div>
                 </div>
             </li>
@@ -69,14 +69,14 @@
                     <li><a href="{{route('students.add')}}">Add New</a></li>
                     <li><a href="{{route('students')}}">List</a></li>
                     <li><a href="{{route('attendances')}}">Attendance</a></li>
-                
+
                 </ul>
             </li>
             <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Program</span></a>
                 <ul class="ml-menu">
                     <li><a href="{{route('courses.add')}}">Add New</a></li>
                     <li><a href="{{route('courses')}}">List</a></li>
-                
+
                 </ul>
             </li>
             {{-- <li><a href="{{ route('profile.show') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li> --}}
@@ -95,19 +95,21 @@
 
 <!-- Main Content -->
 <section class="content">
-    
+
     <div class="body_scroll">
         <div class="block-header">
-           
+
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>@yield('title')</h2>
+                    <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#timesheet">Time Sheet</button>
+                    <button type="button" class="btn btn-default waves-effect m-r-20 href"  data-target="{{route('dashboard')}}">Dashboard</button>
                     <ul class="breadcrumb">
                         @yield('breadcrumb')
                     </ul>
                     <button class="btn btn-primary btn-icon mobile_menu" type="button"><i class="zmdi zmdi-sort-amount-desc"></i></button>
                 </div>
-                <div class="col-lg-5 col-md-6 col-sm-12">                
+                <div class="col-lg-5 col-md-6 col-sm-12">
                     <button class="btn btn-primary btn-icon float-right right_icon_toggle_btn" type="button"><i class="zmdi zmdi-arrow-right"></i></button>
                 </div>
             </div>
@@ -144,9 +146,12 @@
         </div>
     </div>
 </section>
-<!-- Jquery Core Js --> 
-<script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js --> 
-<script src="{{asset('assets/bundles/vendorscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js --> 
+
+@include('dashboard.timesheet')
+
+<!-- Jquery Core Js -->
+<script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js -->
+<script src="{{asset('assets/bundles/vendorscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js -->
 <script>
     $.ajaxSetup({
         headers: {

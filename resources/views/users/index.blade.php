@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 @section('title','Attendance')
 @section('content')
     <div class="m-3 p-3 shadow">
@@ -42,7 +42,7 @@
         </form>
     </div>
     <div class="m-3 p-3 mt-5 shadow">
-        <table class="table"> 
+        <table class="table">
             <tr>
                 <th>
                     Name
@@ -63,13 +63,13 @@
                 </form>
                 <tr>
                     <td>
-                        <input type="text" name="name" id="name-{{$user->id}}" required class="form-control" placeholder="Name" value="{{$user->name}}" form="form-{{$user->id}}"> 
+                        <input type="text" name="name" id="name-{{$user->id}}" required class="form-control" placeholder="Name" value="{{$user->name}}" form="form-{{$user->id}}">
                     </td>
                     <td>
-                        <input type="email" name="email" id="email-{{$user->id}}" required class="form-control" placeholder="Email Address" value="{{$user->email}}" form="form-{{$user->id}}"> 
+                        <input type="email" name="email" id="email-{{$user->id}}" required class="form-control" placeholder="Email Address" value="{{$user->email}}" form="form-{{$user->id}}">
                     </td>
                     <td>
-                        <input type="text" name="center" id="center-{{$user->id}}" required class="form-control" placeholder="Branch" value="{{$user->center}}" form="form-{{$user->id}}"> 
+                        <input type="text" name="center" id="center-{{$user->id}}" required class="form-control" placeholder="Branch" value="{{$user->center}}" form="form-{{$user->id}}">
 
                     </td>
                     <td>
@@ -116,7 +116,7 @@
         function showedit(id){
             $("#eid").val(id);
             $('#edit-modal').modal('show');
-            
+
         }
 
         function changePass(){
@@ -135,7 +135,7 @@
             })
             .catch(function(err){
                 $('#edit-modal').modal('hide');
-                showNotification('bg-success', 'Password cannot be updated');
+                showNotification('bg-danger', 'Password cannot be updated');
                 document.getElementById('edit-form').reset();
             })
 

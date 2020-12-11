@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Student;
+use App\Models\Course;
+use App\Models\Plan;
 use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
@@ -42,7 +44,7 @@ class PaymentController extends Controller
             "student_id"=>"required|integer"
         ]);
 
-        
+
         $std=Student::find($pay->student_id);
         $std->balance=$std->balance+$pay->amount-$request->amount;
         $std->save();
@@ -61,5 +63,30 @@ class PaymentController extends Controller
         $pay->delete();
         return redirect()->route('students.show',['std'=>$pay->student_id])->with('message',"Payment Deleted sucessfully");
 
+    }
+
+    public function plan(Course $course ){
+        return view('course.plan',compact('course'));
+    }
+
+    public function planAdd(Request $request){
+        $plan=new Plan();
+        $plan->amount=$request->amount;
+        $plan->day=$request->day;
+        $plan->course_id=$request->course_id;
+        $plan->save();
+        return redirect()->route('payment.plan',['course'=>$request->course_id]);
+    }
+
+    public function planEdit(Plan $plan,Request $request){
+        $plan->amount=$request->amount;
+        $plan->day=$request->day;
+        $plan->save();
+        return redirect()->route('payment.plan',['course'=>$plan->course_id]);
+    }
+    public function planDel(Plan $plan){
+        $id=$plan->course_id;
+        $plan->delete();
+        return redirect()->route('payment.plan',['course'=>$id]);
     }
 }

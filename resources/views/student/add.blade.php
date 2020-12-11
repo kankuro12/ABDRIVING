@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 @section('title','Add Student')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/nepali.datepicker.v3.2.min.css')}}">
@@ -15,7 +15,11 @@
                 'O-',
                 'AB-'
             ];
-@endphp 
+@endphp
+
+<h3 class="font-weight-bold">
+    <a href="{{ route('students') }}">Students</a> / Add
+</h3>
     <div>
         <form action="{{route('students.add')}}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -29,7 +33,7 @@
                                 {{$course->name}}
                             </option>
                         @endforeach
-                       
+
                     </select>
                     {{-- <input type="text" class="form-control" required placeholder="Name" name="name" required > --}}
                 </div>
@@ -43,7 +47,7 @@
                                 {{$slot->time}}
                             </option>
                         @endforeach
-                        
+
                     </select>
                 </div>
             </div>
@@ -91,7 +95,7 @@
                     <input  type="text" class="form-control"  placeholder="Mother's Name" name="mname" >
                 </div>
             </div>
-           
+
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="name">Blood Group</label>
@@ -195,9 +199,9 @@
                     </div>
                     <div class="col-md-6">
                         <label for="">Next Payment After</label>
-                        <input type="text" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
+                        <input type="number" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-md-12">
@@ -215,14 +219,14 @@
     <script type="text/javascript">
         window.onload = function() {
             var mainInput = document.getElementById("dob");
-           
+
             mainInput.nepaliDatePicker({
                 ndpYear: true,
                 ndpMonth: true,
             });
 
             var mainInput1 = document.getElementById("startfrom");
-           
+
             mainInput1.nepaliDatePicker({
                 ndpYear: true,
                 ndpMonth: true,
@@ -233,7 +237,7 @@
                 ndpMonth: true,
             });
             $('#dob').on("input",function(){
-                
+
             });
         };
     </script>

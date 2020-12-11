@@ -52,7 +52,7 @@ class StudentController extends Controller
             $pay->user_id=Auth::user()->id;
             $pay->save();
 
-          
+
             $std->balance=$std->balance-$pay->amount;
             $std->save();
 
@@ -72,7 +72,7 @@ class StudentController extends Controller
     }
     public function show(Student $std,Request $request){
         if($request->getMethod()=="POST"){
-           
+
             $std->name=$request->name;
             $std->fname      =$request->fname      ;
             $std->mname      =$request->mname      ;
@@ -98,7 +98,7 @@ class StudentController extends Controller
             $std->Program    =$request->Program  ??""  ;
             $std->course_id=$request->course_id;
             $std->slot_id=$request->slot_id;
-        
+
             if($request->hasFile('image')){
                 $std->image=$request->image->store('data');
             }
@@ -107,5 +107,19 @@ class StudentController extends Controller
         }else{
             return view('student.show',compact('std'));
         }
+    }
+
+    public function ledger(Student $std){
+        return view('student.ledger',compact('std'));
+    }
+    public function attendance(Student $std){
+        return view('student.attendance',compact('std'));
+    }
+
+    public function passout(Student $std){
+        $std->complete=1;
+        $std->save();
+
+        return redirect()->back()->with('message','Student Marked As Password');
     }
 }
