@@ -14,7 +14,7 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs p-0 mb-3 nav-tabs-success" role="tablist">
         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#incomplete"> Current Students </a></li>
-        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#complete"> Complete Students </a></li>
+        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#complete"> Passed Out Students </a></li>
 
     </ul>
     <div class="tab-content">
