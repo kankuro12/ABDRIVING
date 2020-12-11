@@ -22,6 +22,6 @@ class Student extends Model
     }
 
     public function slot(){
-        return $this->belongsTo(slot::class);
+        return $this->belongsTo(Slot::class);
     }
 }

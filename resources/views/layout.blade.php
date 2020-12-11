@@ -102,8 +102,9 @@
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>@yield('title')</h2>
-                    <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#timesheet">Time Sheet</button>
                     <button type="button" class="btn btn-default waves-effect m-r-20 href"  data-target="{{route('dashboard')}}">Dashboard</button>
+                    <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#timesheet">Time Sheet</button>
+                    <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#duelist">Due List</button>
                     <ul class="breadcrumb">
                         @yield('breadcrumb')
                     </ul>

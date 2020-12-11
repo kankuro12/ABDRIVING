@@ -1,5 +1,9 @@
 @extends('layout')
 @section('title','Due Accounts')
+@section('css')
+<link rel="stylesheet" href="{{asset('assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css')}}">
+
+@endsection
 @section('content')
     <h3>
         Due List
@@ -11,6 +15,9 @@
             </th>
             <th>
                 Phone
+            </th>
+            <th>
+                Paid Amount
             </th>
             <th>
                 Due Amount
@@ -25,9 +32,24 @@
                     {{$student['phone']}}
                 </td>
                 <td>
+                    {{$student['amount']}}
+                </td>
+                <td>
                     {{$student['dueamount']}}
                 </td>
             </tr>
         @endforeach
     </table>
+@endsection
+@section('js')
+<script src="{{asset('assets/bundles/datatablescripts.bundle.js')}}"></script>
+<script src="{{asset('assets/plugins/jquery-datatable/buttons/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js')}}"></script>
+<script>
+
+
+    $(function () {
+        $('#DueList').DataTable();
+    });
+</script>
 @endsection
