@@ -55,7 +55,7 @@
                     <a class="image" href="#"><img src="https://cdn4.iconfinder.com/data/icons/basic-interface-overcolor/512/user-512.png" alt="User"></a>
                     <div class="detail">
 
-                        <h4>{{Auth::user()->name}}</h4>
+                        <h5>{{Auth::user()->name}}</h5>
                         <small>{{Auth::user()->email}}</small>
                     </div>
                 </div>
