@@ -39,7 +39,7 @@
                     </a>
                 @endif
 
-                <input type="submit" value="Login" class="bg-black text-white pr-4 pl-4 pt-2 pb-2">
+                <input type="submit" value="Login" style="background:black;margin:5px;padding:5px 10px;color:white;">
             </div>
         </form>
     </x-jet-authentication-card>
