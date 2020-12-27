@@ -8,6 +8,12 @@
     <h3 class="font-weight-bold">
         <a href="{{ route('students') }}">Students</a>/{{$std->name}} /Details
     </h3>
+    <h4>Deal Amount : {{ $std->dealamount }} (Rs.)</h4>
+    <h5>Packege : {{ $std->course->name}}</h5>
+    @php
+        $att = \App\Models\Attendance::where('student_id',$std->id)->where('attend',1)->count();
+    @endphp
+    <h5>Total Attendance : {{$att}} Days</h5>
 
 <div class="">
     @include('student.payment',['std'=>$std])

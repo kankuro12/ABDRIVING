@@ -70,6 +70,7 @@
                                     <a href="{{route('students.show',['std'=>$std->id])}}" target="_blank">Details</a>
                                     |
                                     <a href="{{route('students.attendance',['std'=>$std->id])}}"  target="_blank">Attendance</a>
+                                    |
                                     <div class="text-center">
                                         <a href="{{route('students.passout',['std'=>$std->id])}}" target="_blank">Mark As Passout</a>
                                     </div>
@@ -133,6 +134,9 @@
                                     <a href="{{route('students.show',['std'=>$std->id])}}">Details</a>
                                     |
                                     <a href="{{route('students.attendance',['std'=>$std->id])}}">Attendance</a>
+                                    |
+                                    <a href="{{route('students.passout.cancel',['std'=>$std->id])}}">Passout Cancel</a>
+
 
                                 </td>
                             </tr>

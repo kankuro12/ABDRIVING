@@ -55,10 +55,12 @@ class AccountController extends Controller
 
     public function due(Request $request){
         $students=Student::where('complete',0)->get();
+        // dd($students);
         $arr=[];
         foreach($students as $student){
             $amount=Payment::where('student_id',$student->id)->sum('amount');
             $plans=Plan::where('course_id',$student->course_id)->orderBy('day','desc')->get();
+            // dd($plans);
             $att=Attendance::where('student_id',$student->id)->where('attend',1)->count();
             foreach($plans as $plan){
                 if($plan->day<=$att){
@@ -76,6 +78,7 @@ class AccountController extends Controller
                 }
             }
         }
+        // dd($arr);
         return view('Account.due',compact('arr'));
 
 

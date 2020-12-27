@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="form-group">
-                    <label for="Program">Program</label>
+                    <label for="Program">Program <span class="text-danger">*</span></label>
                     <select name="course_id" id="program" class="form-control" required>
                         @foreach (\App\Models\Course::all() as $course)
                             <option value="{{$course->id}}">
@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="shift">Shift</label>
+                    <label for="shift">Shift <span class="text-danger">*</span></label>
                     <select name="slot_id" id="time" class="form-control">
                         @foreach (\App\Models\Slot::all() as $slot)
                             <option value="{{$slot->id}}">
@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" required placeholder="Name" name="name" required >
                 </div>
             </div>
@@ -67,19 +67,19 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="phone">Phone </label>
+                    <label for="phone">Phone <span class="text-danger">*</span></label>
                     <input maxlength="10" minlength="8" type="text" class="form-control" required placeholder="Phone number" name="phone" >
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="caddress">Current Address </label>
-                    <input  type="text" class="form-control"  placeholder="Current Address" name="caddress" >
+                    <label for="caddress">Current Address <span class="text-danger">*</span></label>
+                    <input  type="text" class="form-control"  placeholder="Current Address" name="caddress" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="paddress">Permanent Address </label>
+                    <label for="paddress">Permanent Address <span class="text-danger">*</span></label>
                     <input  type="text" class="form-control" required placeholder="Permanent Address" name="paddress" >
                 </div>
             </div>
@@ -99,7 +99,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="name">Blood Group</label>
-                    <select  class="form-control" required  name="bloodgroup">
+                    <select  class="form-control"  name="bloodgroup">
                         @foreach ($bg as $b)
                             <option value="{{$b}}">{{$b}}</option>
                         @endforeach
@@ -108,7 +108,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="gender">Gender</label>
+                    <label for="gender">Gender <span class="text-danger">*</span></label>
                     <select  class="form-control" required  name="gender">
                        <option value="male">Male</option>
                        <option value="female">Female</option>
@@ -119,31 +119,31 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="dob">Date Of Birth</label>
-                    <input type="text" name="dob" class="form-control" required  id="dob" required>
+                    <input type="text" name="dob" class="form-control"  id="dob">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="number" min="1" name="age" class="form-control" required name="age" id="age" placeholder="Age" required>
+                    <input type="number" min="1" name="age" class="form-control" name="age" id="age" placeholder="Age" >
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="citino">Citizenship No</label>
-                    <input type="text" name="citino" class="form-control" required  id="citino" placeholder="Citizenship No">
+                    <input type="text" name="citino" class="form-control"  id="citino" placeholder="Citizenship No">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="education">Education</label>
-                    <input type="text" name="education" class="form-control" required  id="education" placeholder="Education">
+                    <input type="text" name="education" class="form-control"  id="education" placeholder="Education">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="ftype">Family Type</label>
-                    <select name="ftype" class="form-control" required  id="ftype">
+                    <select name="ftype" class="form-control"  id="ftype">
                         <option value="single">Single</option>
                         <option value="union">Union</option>
                     </select>
@@ -163,20 +163,20 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="dealamount">Deal Amount</label>
+                    <label for="dealamount">Deal Amount <span class="text-danger">*</span></label>
                     <input type="number" min="0" name="dealamount" class="form-control" placeholder="Deal Amount" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="startfrom">Start Date</label>
+                    <label for="startfrom">Start Date <span class="text-danger">*</span></label>
                     <input type="text" name="startfrom" placeholder="Start Date" id="startfrom" required class="form-control">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="image">Photo</label>
-                    <input type="file" required name="image" class="form-control" accept="image/*" >
+                    <input type="file" name="image" class="form-control" accept="image/*" >
                 </div>
             </div>
             <div class="col-md-12">
@@ -186,19 +186,19 @@
                 </h3>
                 <div class="row">
                     <div class="col-md-2">
-                        <label >Bill No</label>
+                        <label >Bill No <span class="text-danger">*</span></label>
                         <input type="text" name="billno" id="billno" class="form-control" placeholder="Bill No" required>
                     </div>
                     <div class="col-md-2">
-                        <label for="">Amount</label>
+                        <label for="">Amount <span class="text-danger">*</span></label>
                         <input type="number" name="amount" id="amount" min="1" required class="form-control" placeholder="Amount" required>
                     </div>
                     <div class="col-md-2">
-                        <label for="">Date</label>
+                        <label for="">Date <span class="text-danger">*</span></label>
                         <input type="text" name="date" id="p-date"  required class="form-control" placeholder="Payment Date" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="">Next Payment After</label>
+                        <label for="">Next Payment After <span class="text-danger">*</span></label>
                         <input type="number" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
                     </div>
 

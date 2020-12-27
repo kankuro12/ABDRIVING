@@ -68,15 +68,25 @@ class StudentController extends Controller
         $list=Student::where('complete',0)->get();
         $old=Student::where('complete',1)->get();
         return view('student.index',compact('list','old'));
-
     }
+
+    public function changeTimeSheet(Request $request, $id){
+        if($request->isMethod('post')){
+
+        }else{
+            $std = Student::find($id);
+            return view('student.changetimesheet',compact('std'));
+        }
+    }
+
+
     public function show(Student $std,Request $request){
         if($request->getMethod()=="POST"){
 
             $std->name=$request->name;
             $std->fname      =$request->fname      ;
             $std->mname      =$request->mname      ;
-            $std->paddress   =$request->paddress   ;
+            $std->paddress   = $request->paddress   ;
             $std->caddress   =$request->caddress   ;
             $std->phone      =$request->phone      ;
             $std->email      =$request->email      ;
@@ -120,6 +130,13 @@ class StudentController extends Controller
         $std->complete=1;
         $std->save();
 
-        return redirect()->back()->with('message','Student Marked As Password');
+        return redirect()->back()->with('message','Student Marked As Passout');
+    }
+
+    public function passoutCancel(Student $std){
+        $std->complete=0;
+        $std->save();
+
+        return redirect()->back()->with('message','Student Marked as passout cancle');
     }
 }

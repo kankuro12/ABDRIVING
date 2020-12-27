@@ -22,8 +22,12 @@
             <th>
                 Due Amount
             </th>
+            <th>Attendance</th>
         </tr>
         @foreach ($arr as $student)
+        @php
+           $att = \App\Models\Attendance::where('student_id',$student['id'])->where('attend',1)->count();
+        @endphp
             <tr>
                 <td>
                     {{$student['name']}}
@@ -36,6 +40,9 @@
                 </td>
                 <td>
                     {{$student['dueamount']}}
+                </td>
+                <td>
+                    {{ $att }}
                 </td>
             </tr>
         @endforeach
