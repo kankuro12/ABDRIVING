@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Expense;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Student;
 use App\Models\Plan;
+use App\Models\User;
+
 class AccountController extends Controller
 {
     public function __construct()
@@ -45,6 +48,7 @@ class AccountController extends Controller
         $payment->save();
     }
 
+
     public function acceptall(Request $request){
         $request->validate(['date'=>'required']);
         $payment =Payment::where('date',$request->date)->update([
@@ -52,6 +56,27 @@ class AccountController extends Controller
         ]);
         return redirect()->route('account.daily')->withInput($request->all());
     }
+
+    public function dailyTransactionRequest(Request $request){
+        if($request->isMethod('post')){
+            $user = User::where('role','!=',0)->get();
+            $payment = Payment::where('date',$request->date)->whereIn('user_id',$user)->get();
+            // dd($payment);
+            $expense = Expense::where('date',$request->date)->whereIn('user_id',$user)->get();
+            // dd($expense);
+            return view('Account.request',['date'=>$request->date,'payment'=>$payment,'expense'=>$expense,'user'=>$user]);
+        }else{
+            if(old('date')){
+                $user = User::where('role','!=',0)->get();
+                $payment = Payment::where('date',old('date'))->whereIn('user_id',$user)->get();
+                $expense = Expense::where('date',old('date'))->whereIn('user_id',$user)->get();
+                return view('Account.request',['payment'=>$payment,'expense'=>$expense,'user'=>$user]);
+            }else{
+                return view('Account.request',['payment'=>[],'expense'=>[],'user'=>[]]);
+            }
+        }
+    }
+
 
     public function due(Request $request){
         $students=Student::where('complete',0)->get();

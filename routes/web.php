@@ -79,6 +79,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         route::post('/add','UserController@add')->name('users.add');
         route::post('/edit/{user}','UserController@edit')->name('users.edit');
         route::post('/cedit','UserController@changepass')->name('users.pass');
+    });
+
+    Route::prefix('daily')->group(function(){
+        Route::match(['get', 'post'], 'makerequest','DailyController@index')->name('transaction.request');
+        Route::match(['get', 'post'], 'sendrequest','DailyController@sendRequest')->name('send.request');
+        Route::match(['get', 'post'], 'branchrequest','DailyController@seeRequest')->name('branch.request');
+        route::get('acceptrequest/{id}','DailyController@acceptRequest')->name('accept.request');
+        Route::match(['get', 'post'], 'all-accepted-request','DailyController@allAcceptedRequest')->name('all.accept.request');
 
     });
 
@@ -86,8 +94,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         route::match(['GET','POST'],'daily','AccountController@daily')->name('account.daily');
         route::match(['GET','POST'],'accept','AccountController@accept')->name('account.daily.accept');
         route::match(['GET','POST'],'acceptall','AccountController@acceptall')->name('account.daily.acceptall');
-
         route::match(['GET','POST'],'due','AccountController@due')->name('account.due');
 
+    });
+
+    Route::prefix('Expense')->group(function(){
+        route::match(['GET','POST'],'expenses','ExpenseController@index')->name('expenses');
     });
 });

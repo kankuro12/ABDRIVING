@@ -58,6 +58,16 @@
                     </span>
                 </h2>
             </div>
+            @if (Auth::user()->role == 1)
+            <div class="col-md-3 p-0 section href" data-target="{{ route('transaction.request') }}">
+                <h2>
+                    <i class="fas fa-users"></i>
+                    <span>
+                        Send Daily Request
+                    </span>
+                </h2>
+            </div>
+            @endif
             @if (Auth::user()->role == 0)
                 <div class="col-md-3 p-0 section href" data-target="{{ route('users') }}">
                     <h2>
@@ -73,6 +83,22 @@
                         <i class="fas fa-users"></i>
                         <span>
                             Daily Account
+                        </span>
+                    </h2>
+                </div>
+                <div class="col-md-3 p-0 section href" data-target="{{ route('branch.request') }}">
+                    <h2>
+                        <i class="fas fa-users"></i>
+                        <span>
+                            Branch Daily Request
+                        </span>
+                    </h2>
+                </div>
+                <div class="col-md-3 p-0 section href" data-target="{{ route('all.accept.request') }}">
+                    <h2>
+                        <i class="fas fa-users"></i>
+                        <span>
+                            All Accepted Request
                         </span>
                     </h2>
                 </div>

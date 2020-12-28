@@ -71,13 +71,12 @@
                     <li><a href="{{route('attendances')}}">Attendance</a></li>
                 </ul>
             </li>
-            {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Program</span></a>
+            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Expenses</span></a>
                 <ul class="ml-menu">
-                    <li><a href="{{route('courses.add')}}">Add New</a></li>
-                    <li><a href="{{route('courses')}}">List</a></li>
-
+                    <li><a href="{{route('expenses')}}">Expenses</a></li>
+                    <li><a href="">List</a></li>
                 </ul>
-            </li> --}}
+            </li>
             {{-- <li><a href="{{ route('profile.show') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li> --}}
             <li><a href="#"><i class="zmdi zmdi-sign-in"></i><span>
                 <form method="POST" action="{{ route('logout') }}" style="display:inline;">
