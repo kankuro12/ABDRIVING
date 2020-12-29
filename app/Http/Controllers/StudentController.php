@@ -50,6 +50,7 @@ class StudentController extends Controller
             $pay->currentattendance=0;
             $pay->nextpayattendance=$request->nextpayment;
             $pay->user_id=Auth::user()->id;
+            $pay->netpaydate = $request->nextpaydate;
             $pay->save();
 
 

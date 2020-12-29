@@ -28,6 +28,12 @@
 @section('js')
     <script src="{{asset('js/nepali.datepicker.v3.2.min.js')}}"></script>
     <script>
+        date1=document.getElementById('nextpaymentdate');
+        date1.nepaliDatePicker({
+            ndpYear: true,
+            ndpMonth: true,
+        });
+
         date=document.getElementById('p-date');
         date.nepaliDatePicker({
             ndpYear: true,

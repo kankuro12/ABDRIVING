@@ -197,9 +197,14 @@
                         <label for="">Date <span class="text-danger">*</span></label>
                         <input type="text" name="date" id="p-date"  required class="form-control" placeholder="Payment Date" required>
                     </div>
-                    <div class="col-md-6">
-                        <label for="">Next Payment After <span class="text-danger">*</span></label>
+                    <div class="col-md-3">
+                        <label for="">Next Payment Day <span class="text-danger">*</span></label>
                         <input type="number" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="">Next Payment Date <span class="text-danger">*</span></label>
+                        <input type="text" name="nextpaydate" id="nextpaymentdate"  required class="form-control" placeholder="Next Payment date After" required>
                     </div>
 
                 </div>
@@ -221,6 +226,13 @@
             var mainInput = document.getElementById("dob");
 
             mainInput.nepaliDatePicker({
+                ndpYear: true,
+                ndpMonth: true,
+            });
+
+            var mainInput12 = document.getElementById("nextpaymentdate");
+
+            mainInput12.nepaliDatePicker({
                 ndpYear: true,
                 ndpMonth: true,
             });

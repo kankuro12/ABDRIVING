@@ -19,7 +19,7 @@
     <form  method="post" action="{{route('payments.add')}}">
         @csrf
 
-        <div class="row">
+        <div class="row mb-2">
             <input type="hidden" name="student_id" value="{{$std->id}}">
             <div class="col-md-2">
                 <label >Bill No</label>
@@ -29,13 +29,17 @@
                 <label for="">Amount</label>
                 <input type="number" max="{{$std->balance}}" name="amount" id="amount" min="1" required class="form-control" placeholder="Amount" required>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="">Date</label>
                 <input type="text" name="date" id="p-date"  required class="form-control" placeholder="Payment Date" required>
             </div>
             <div class="col-md-4">
-                <label for="">Next Payment After</label>
-                <input type="text" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
+                <label for="">Next Payment Day</label>
+                <input type="number" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
+            </div>
+            <div class="col-md-4">
+                <label for="">Next Payment Date</label>
+                <input type="text" name="nextpaydate" id="nextpaymentdate"  required class="form-control" placeholder="Next Payment Days After" required>
             </div>
             <div class="col-md-2">
                 <label for="">Action</label>

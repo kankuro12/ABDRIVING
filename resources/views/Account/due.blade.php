@@ -22,11 +22,13 @@
             <th>
                 Due Amount
             </th>
+            <th>Due Payment Date</th>
             <th>Attendance</th>
         </tr>
         @foreach ($arr as $student)
         @php
            $att = \App\Models\Attendance::where('student_id',$student['id'])->where('attend',1)->count();
+           $nextpaydate = \App\Models\Payment::where('student_id',$student['id'])->first();
         @endphp
             <tr>
                 <td>
@@ -41,6 +43,7 @@
                 <td>
                     {{$student['dueamount']}}
                 </td>
+                <td>{{ $nextpaydate->netpaydate }}</td>
                 <td>
                     {{ $att }}
                 </td>

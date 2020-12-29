@@ -28,6 +28,7 @@ class PaymentController extends Controller
         $pay->nextpayattendance=$request->nextpayment;
         $pay->user_id=Auth::user()->id;
         $pay->student_id=$request->student_id;
+        $pay->netpaydate = $request->nextpaydate;
         $pay->save();
 
         $pay->currentattendance=$std->attendances->count();

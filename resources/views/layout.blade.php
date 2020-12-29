@@ -75,7 +75,7 @@
             <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Expenses</span></a>
                 <ul class="ml-menu">
                     <li><a href="{{route('expenses')}}">Expenses</a></li>
-                    <li><a href="">List</a></li>
+                    {{-- <li><a href="">List</a></li> --}}
                 </ul>
             </li>
             {{-- <li><a href="{{ route('profile.show') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li> --}}
