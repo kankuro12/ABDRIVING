@@ -42,13 +42,14 @@
         </tr>
 
         @foreach ($expense as $exp)
-        <form action="">
+       <form action="{{route('expense.update',$exp->id)}}">
             <tr>
                <td><input type="text" name="date" id="exp-{{$exp->id}}" class="form-control date" value="{{ $exp->date }}"></td>
                 <td><input type="text" name="title" class="form-control" value="{{ $exp->title }}"> </td>
                 <td><input type="text" name="amount" class="form-control" value="{{ $exp->amount }}"> </td>
                 <td>
                     <button class="btn btn-primary btn-sm">Update</button>
+                    <a href="{{ route('expense.del',$exp->id) }}" onclick=" return confirm('Are you sure');" class="btn btn-danger btn-sm">Del</a>
                 </td>
             </tr>
         </form>

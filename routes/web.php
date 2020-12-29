@@ -100,5 +100,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::prefix('Expense')->group(function(){
         route::match(['GET','POST'],'expenses','ExpenseController@index')->name('expenses');
+        route::match(['GET','POST'],'expense/update/{id}','ExpenseController@expenseUpdate')->name('expense.update');
+        route::match(['GET','POST'],'expense/del/{id}','ExpenseController@expenseDelete')->name('expense.del');
     });
 });
