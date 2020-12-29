@@ -12,10 +12,10 @@ use App\Models\User;
 
 class AccountController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('isadmin');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('isadmin');
+    // }
 
     public function daily(Request $request){
         // dd($request);
