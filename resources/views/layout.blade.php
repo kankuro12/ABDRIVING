@@ -61,9 +61,10 @@
                 </div>
             </li>
             <li><a href="/"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
-            <li><a href="{{route('courses')}}"><i class="zmdi zmdi-view-list-alt"></i><span>Courses</span></a></li>
-            <li><a href="{{route('slots')}}"><i class="zmdi zmdi-alarm"></i><span>Slots</span></a></li>
-
+            @if (Auth::user()->role == 0)
+                <li><a href="{{route('courses')}}"><i class="zmdi zmdi-view-list-alt"></i><span>Courses</span></a></li>
+                <li><a href="{{route('slots')}}"><i class="zmdi zmdi-alarm"></i><span>Slots</span></a></li>
+            @endif
             <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Student</span></a>
                 <ul class="ml-menu">
                     <li><a href="{{route('students.add')}}">Add New</a></li>

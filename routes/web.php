@@ -40,6 +40,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::match(['GET','POST'],'/passout/{std}', 'StudentController@passout')->name('students.passout');
         Route::match(['GET','POST'],'/passout/cancel/{std}', 'StudentController@passoutCancel')->name('students.passout.cancel');
 
+        Route::match(['GET','POST'],'/get/student/by/custome', 'StudentController@getStudentByCustomeDate')->name('student.by.custome.date');
+
     });
 
     Route::prefix('courses')->group(function(){

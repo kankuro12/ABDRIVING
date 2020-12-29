@@ -65,9 +65,9 @@ class StudentController extends Controller
     }
 
     public function index(){
-        $list=Student::where('complete',0)->get();
-        $old=Student::where('complete',1)->get();
-        return view('student.index',compact('list','old'));
+            $list=Student::where('complete',0)->get();
+            $old=Student::where('complete',1)->get();
+            return view('student.student',['list'=>$list,'old'=>$old]);
     }
 
     public function changeTimeSheet(Request $request, $id){
@@ -138,5 +138,20 @@ class StudentController extends Controller
         $std->save();
 
         return redirect()->back()->with('message','Student Marked as passout cancle');
+    }
+
+
+
+    public function getStudentByCustomeDate(Request $request){
+        $year=$request->year;
+        $month=$request->month;
+        $dates=[];
+        for ($i=1; $i < 33; $i++) {
+            array_push($dates,$year."-".($month<10?"0".$month:$month)."-".($i<10?"0".$i:$i));
+        }
+        // dd($dates);
+        $list = Student::whereIn('startfrom',$dates)->where('complete',0)->get();
+        $old = Student::whereIn('startfrom',$dates)->where('complete',1)->get();
+        return view('student.student',['list'=>$list,'old'=>$old]);
     }
 }
