@@ -6,28 +6,30 @@
 @section('content')
     <div class="p-2 dashboard">
         <div class="row">
-            <div class="col-md-3 p-0 section href" data-target="{{ route('courses') }}">
-                <h2>
+            @if(Auth::user()->role == 0)
+                <div class="col-md-3 p-0 section href" data-target="{{ route('courses') }}">
+                    <h2>
 
-                    <i class="fas fa-th-list"></i>
+                        <i class="fas fa-th-list"></i>
 
-                    <span>
+                        <span>
 
-                        Courses
-                    </span>
-                </h2>
-            </div>
-            <div class="col-md-3 p-0 section href" data-target="{{ route('slots') }}">
-                <h2>
+                            Courses
+                        </span>
+                    </h2>
+                </div>
+                <div class="col-md-3 p-0 section href" data-target="{{ route('slots') }}">
+                    <h2>
 
-                    <i class="fas fa-clock"></i>
+                        <i class="fas fa-clock"></i>
 
-                    <span>
+                        <span>
 
-                        Time Slots
-                    </span>
-                </h2>
-            </div>
+                            Time Slots
+                        </span>
+                    </h2>
+                </div>
+            @endif
             <div class="col-md-3 p-0 section href" data-target="{{ route('students') }}">
                 <h2>
 

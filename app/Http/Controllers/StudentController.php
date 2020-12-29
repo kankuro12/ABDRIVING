@@ -67,7 +67,7 @@ class StudentController extends Controller
     public function index(){
             $list=Student::where('complete',0)->get();
             $old=Student::where('complete',1)->get();
-            return view('student.student',['list'=>$list,'old'=>$old]);
+            return view('student.index',['list'=>$list,'old'=>$old]);
     }
 
     public function changeTimeSheet(Request $request, $id){
@@ -152,6 +152,6 @@ class StudentController extends Controller
         // dd($dates);
         $list = Student::whereIn('startfrom',$dates)->where('complete',0)->get();
         $old = Student::whereIn('startfrom',$dates)->where('complete',1)->get();
-        return view('student.student',['list'=>$list,'old'=>$old]);
+        return view('student.index',['list'=>$list,'old'=>$old]);
     }
 }
