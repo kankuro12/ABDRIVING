@@ -18,22 +18,23 @@
                     foreach($students as $student){
                         $amount=\App\Models\Payment::where('student_id',$student->id)->sum('amount');
                         $plans=\App\Models\Plan::where('course_id',$student->course_id)->orderBy('day','desc')->get();
-                        $att=\App\Models\Attendance::where('student_id',$student->id)->where('attend',1)->count();
-                        foreach($plans as $plan){
-                            if($plan->day<=$att){
-                                if($amount<$plan->amount){
-                                    // echo $plan->amount.",".$amount."<hr>";
-                                    $student->amount=$amount;
-                                    $student->att=$att;
-                                    $student->dueamount=$plan->amount-$amount;
-
-                                    // echo '<pre>';
-                                    // print_r($student->toArray());
-                                    // echo '</pre><hr>';
-                                    array_push($arr,$student->toArray());
-                                }
-                            }
+                        if($student->dealamount>$amount){
+                            $student->amount=$amount;
+                            $student->dueamount=$student->dealamount-$amount;
+                            array_push($arr,$student->toArray());
                         }
+                        // foreach($plans as $plan){
+                        //         if($amount<$plan->amount){
+                        //             // echo $plan->amount.",".$amount."<hr>";
+                        //             $student->amount=$amount;
+                        //             $student->dueamount=$plan->amount-$amount;
+
+                        //             // echo '<pre>';
+                        //             // print_r($student->toArray());
+                        //             // echo '</pre><hr>';
+                        //             array_push($arr,$student->toArray());
+                        //         }
+                        // }
                     }
                 @endphp
                 <table id="" class="table">
@@ -59,7 +60,8 @@
                     </tr>
                     @foreach ($arr as $student)
                     @php
-                        $nextpaydate = \App\Models\Payment::where('student_id',$student['id'])->first();
+                        $nextpaydate = \App\Models\Payment::latest()->where('student_id',$student['id'])->get();
+
                         $att = \App\Models\Attendance::where('student_id',$student['id'])->where('attend',1)->count();
                     @endphp
                         <tr>
@@ -76,7 +78,7 @@
                                 {{$student['dueamount']}}
                             </td>
                             <th>
-                                {{ $nextpaydate->netpaydate }}
+                                {{ $nextpaydate[0]->netpaydate }}
                             </th>
                             <th>
                                 {{ $att }}

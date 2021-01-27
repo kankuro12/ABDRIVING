@@ -167,6 +167,7 @@
 <script src="{{asset('assets\plugins\bootstrap-notify\bootstrap-notify.js')}}"></script>
 @yield('js')
 <script src="{{asset('assets/bundles/mainscripts.bundle.js')}}"></script>
+<script src="{{asset('js/axios.js')}}"></script>
 
 </body>
 

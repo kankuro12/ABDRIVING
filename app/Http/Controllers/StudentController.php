@@ -36,7 +36,7 @@ class StudentController extends Controller
             $std->Program    =$request->Program??""    ;
             $std->course_id=$request->course_id;
             $std->slot_id=$request->slot_id;
-            $std->nextpayattendance=$request->nextpayment;
+            $std->nextpayattendance=1;
             if($request->hasFile('image')){
                 $std->image=$request->image->store('data');
             }
@@ -48,7 +48,7 @@ class StudentController extends Controller
             $pay->billno=$request->billno;
             $pay->student_id=$std->id;
             $pay->currentattendance=0;
-            $pay->nextpayattendance=$request->nextpayment;
+            $pay->nextpayattendance=1;
             $pay->user_id=Auth::user()->id;
             $pay->netpaydate = $request->nextpaydate;
             $pay->save();

@@ -60,7 +60,7 @@
                     </span>
                 </h2>
             </div>
-            @if (Auth::user()->role == 1)
+            {{-- @if (Auth::user()->role == 1)
             <div class="col-md-3 p-0 section href" data-target="{{ route('transaction.request') }}">
                 <h2>
                     <i class="fas fa-users"></i>
@@ -69,7 +69,7 @@
                     </span>
                 </h2>
             </div>
-            @endif
+            @endif --}}
             @if (Auth::user()->role == 0)
                 <div class="col-md-3 p-0 section href" data-target="{{ route('users') }}">
                     <h2>
@@ -88,22 +88,15 @@
                         </span>
                     </h2>
                 </div>
-                <div class="col-md-3 p-0 section href" data-target="{{ route('branch.request') }}">
+                <div class="col-md-3 p-0 section href" data-target="{{ route('accept.request') }}">
                     <h2>
                         <i class="fas fa-users"></i>
                         <span>
-                            Branch Daily Request
+                            Branch Report
                         </span>
                     </h2>
                 </div>
-                <div class="col-md-3 p-0 section href" data-target="{{ route('all.accept.request') }}">
-                    <h2>
-                        <i class="fas fa-users"></i>
-                        <span>
-                            All Accepted Request
-                        </span>
-                    </h2>
-                </div>
+
             @endif
 
             <div class="col-md-3 p-0 section href" data-target="{{ route('account.due') }}">

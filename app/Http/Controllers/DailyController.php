@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dailytransation;
 use App\Models\Expense;
 use App\Models\Payment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,40 +55,36 @@ class DailyController extends Controller
     }
 
     public function seeRequest(Request $request){
-        if($request->isMethod('post')){
-           $daily = Dailytransation::where('date',$request->date)->where('isaccepted',0)->get();
-           return view('daily.see_request',['daily'=>$daily,'date'=>$request->date]);
-        }else{
-            if(old('date')){
-                $daily = Dailytransation::where('date',old('date'))->where('isaccepted',0)->get();
-                return view('daily.see_request',['daily'=>$daily,'date'=>$request->date]);
-            }else{
-                $daily = Dailytransation::where('isaccepted',0)->get();
-                return view('daily.see_request',['daily'=>$daily]);
-            }
-        }
+           $user = User::where('id',$request->user_id)->first();
+           $daily = Payment::where('date',$request->date)->where('user_id',$request->user_id)->get();
+           $expense = Expense::where('date',$request->date)->where('user_id',$request->user_id)->get();
+           return view('daily.data',['daily'=>$daily,'date'=>$request->date,'expenses'=>$expense,'user'=>$user]);
     }
 
-    public function allAcceptedRequest(Request $request){
-        if($request->isMethod('post')){
-            $daily = Dailytransation::where('date',$request->date)->where('isaccepted',1)->get();
-            return view('daily.accepted_request',['daily'=>$daily,'date'=>$request->date]);
-         }else{
-             if(old('date')){
-                 $daily = Dailytransation::where('date',old('date'))->where('isaccepted',1)->get();
-                 return view('daily.accepted_request',['daily'=>$daily,'date'=>$request->date]);
-             }else{
-                $daily = Dailytransation::where('isaccepted',1)->get();
-                 return view('daily.accepted_request',['daily'=>$daily]);
-             }
-         }
+    public function branchReport($id){
+        $user = User::where('id',$id)->first();
+        $daily = Payment::where('user_id',$id)->get();
+        $expense = Expense::where('user_id',$id)->get();
+        return view('daily.see_request',['daily'=>$daily,'expenses'=>$expense,'user'=>$user]);
     }
 
-    public function acceptRequest($id){
-        $daily = Dailytransation::where('id',$id)->first();
-        $daily->isaccepted = 1;
-        $daily->save();
-        return redirect()->back()->with('message',' '.$daily->branch.' request has been accepted !');
+    // public function allAcceptedRequest(Request $request){
+    //     if($request->isMethod('post')){
+    //         $daily = Dailytransation::where('date',$request->date)->where('isaccepted',1)->get();
+    //         return view('daily.accepted_request',['daily'=>$daily,'date'=>$request->date]);
+    //      }else{
+    //          if(old('date')){
+    //              $daily = Dailytransation::where('date',old('date'))->where('isaccepted',1)->get();
+    //              return view('daily.accepted_request',['daily'=>$daily,'date'=>$request->date]);
+    //          }else{
+    //             $daily = Dailytransation::where('isaccepted',1)->get();
+    //              return view('daily.accepted_request',['daily'=>$daily]);
+    //          }
+    //      }
+    // }
+
+    public function acceptRequest(){
+        return view('daily.branch');
     }
 
 

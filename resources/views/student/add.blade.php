@@ -197,10 +197,6 @@
                         <label for="">Date <span class="text-danger">*</span></label>
                         <input type="text" name="date" id="p-date"  required class="form-control" placeholder="Payment Date" required>
                     </div>
-                    <div class="col-md-3">
-                        <label for="">Next Payment Day <span class="text-danger">*</span></label>
-                        <input type="number" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
-                    </div>
 
                     <div class="col-md-3">
                         <label for="">Next Payment Date <span class="text-danger">*</span></label>

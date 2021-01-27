@@ -51,7 +51,7 @@
                 <td>
                     <input type="submit" class=" btn btn-primary" value="Update">
                     <a href="{{route('courses.del',['c'=>$c->id])}}" class="btn btn-danger"> Delete</a>
-                    <a class="d-inline-block" href="{{route('payment.plan',['course'=>$c->id])}}" class="btn btn-success"> Payment Plan</a>
+                    {{-- <a class="d-inline-block" href="{{route('payment.plan',['course'=>$c->id])}}" class="btn btn-success"> Payment Plan</a> --}}
                 </td>
                 </form>
             </tr>

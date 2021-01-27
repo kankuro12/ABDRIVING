@@ -86,8 +86,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::prefix('daily')->group(function(){
         Route::match(['get', 'post'], 'makerequest','DailyController@index')->name('transaction.request');
         Route::match(['get', 'post'], 'sendrequest','DailyController@sendRequest')->name('send.request');
-        Route::match(['get', 'post'], 'branchrequest','DailyController@seeRequest')->name('branch.request');
-        route::get('acceptrequest/{id}','DailyController@acceptRequest')->name('accept.request');
+        Route::match(['get', 'post'], 'branch-report','DailyController@seeRequest')->name('branch.request');
+        route::get('report/{id}','DailyController@branchReport')->name('branch.report');
+        route::get('branch','DailyController@acceptRequest')->name('accept.request');
         Route::match(['get', 'post'], 'all-accepted-request','DailyController@allAcceptedRequest')->name('all.accept.request');
 
     });

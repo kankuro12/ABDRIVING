@@ -33,10 +33,8 @@
                 <label for="">Date</label>
                 <input type="text" name="date" id="p-date"  required class="form-control" placeholder="Payment Date" required>
             </div>
-            <div class="col-md-4">
-                <label for="">Next Payment Day</label>
-                <input type="number" name="nextpayment" id="nextpayment"  required class="form-control" placeholder="Next Payment Days After" required>
-            </div>
+
+                <input type="hidden" name="nextpayment" id="nextpayment"  required class="form-control" value="1" required>
             <div class="col-md-4">
                 <label for="">Next Payment Date</label>
                 <input type="text" name="nextpaydate" id="nextpaymentdate"  required class="form-control" placeholder="Next Payment Days After" required>

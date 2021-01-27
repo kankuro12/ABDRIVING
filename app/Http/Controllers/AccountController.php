@@ -84,24 +84,20 @@ class AccountController extends Controller
         $arr=[];
         foreach($students as $student){
             $amount=Payment::where('student_id',$student->id)->sum('amount');
-            $plans=Plan::where('course_id',$student->course_id)->orderBy('day','desc')->get();
-            // dd($plans);
-            $att=Attendance::where('student_id',$student->id)->where('attend',1)->count();
-            foreach($plans as $plan){
-                if($plan->day<=$att){
-                    if($amount<$plan->amount){
-                        // echo $plan->amount.",".$amount."<hr>";
-                        $student->amount=$amount;
-                        $student->att=$att;
-                        $student->dueamount=$plan->amount-$amount;
-
-                        // echo '<pre>';
-                        // print_r($student->toArray());
-                        // echo '</pre><hr>';
-                        array_push($arr,$student->toArray());
-                    }
-                }
+            if($student->dealamount>$amount){
+                $student->amount=$amount;
+                $student->dueamount=$student->dealamount-$amount;
+                array_push($arr,$student->toArray());
             }
+            // $plans=Plan::where('course_id',$student->course_id)->orderBy('day','desc')->get();
+            // foreach($plans as $plan){
+            //         if($amount<$plan->amount){
+            //             // echo $plan->amount.",".$amount."<hr>";
+            //             $student->amount=$amount;
+            //             $student->dueamount=$plan->amount-$amount;
+            //             array_push($arr,$student->toArray());
+            //         }
+            // }
         }
         // dd($arr);
         return view('Account.due',compact('arr'));
