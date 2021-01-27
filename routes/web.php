@@ -98,6 +98,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         route::match(['GET','POST'],'accept','AccountController@accept')->name('account.daily.accept');
         route::match(['GET','POST'],'acceptall','AccountController@acceptall')->name('account.daily.acceptall');
         route::match(['GET','POST'],'due','AccountController@due')->name('account.due');
+        route::post('/dueload','AccountController@dueload')->name('due.load');
 
     });
 

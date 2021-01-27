@@ -77,6 +77,33 @@ class AccountController extends Controller
         }
     }
 
+    function dueload(Request $request){
+        $date = str_replace('-','',$request->date);
+        $students=Student::where('complete',0)->get();
+        // dd($students);
+
+        $arr=[];
+        foreach($students as $student){
+            $pay=Payment::latest()->where('student_id',$student->id)->get();
+            // dd($pay);
+
+            $amount = $pay->sum('amount');
+                    $nextPayDate = str_replace('-','',$pay[0]->netpaydate);
+                    if($nextPayDate<$date){
+                        if($student->dealamount>$amount){
+                            $student->amount=$amount;
+                            $student->dueamount=$student->dealamount-$amount;
+                            array_push($arr,$student->toArray());
+                        }
+                    }
+            // dd($pay->netpaydate);
+            // $amount= $pay->sum('amount');
+            // dd($amount);
+        }
+        return view('Account.duelist',compact('arr'));
+
+    }
+
 
     public function due(Request $request){
         $students=Student::where('complete',0)->get();

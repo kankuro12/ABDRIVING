@@ -53,7 +53,6 @@ class StudentController extends Controller
             $pay->netpaydate = $request->nextpaydate;
             $pay->save();
 
-
             $std->balance=$std->balance-$pay->amount;
             $std->save();
 
@@ -83,7 +82,7 @@ class StudentController extends Controller
 
     public function show(Student $std,Request $request){
         if($request->getMethod()=="POST"){
-
+            // dd($request->all());
             $std->name=$request->name;
             $std->fname      =$request->fname      ;
             $std->mname      =$request->mname      ;
@@ -103,7 +102,10 @@ class StudentController extends Controller
             $std->occupation    =$request->occupation    ;
             $std->fmember    =$request->fmember    ;
             $std->dealamount    =$request->dealamount    ;
-            $std->balance    =$request->dealamount    ;
+            $payment = Payment::where('student_id',$std->id)->sum('amount');
+            // dd($payment);
+            $std->balance=$std->dealamount-$payment;
+            // $std->balance    =$request->dealamount    ;
             $std->time     =$request->time??""     ;
             $std->startfrom    =$request->startfrom    ;
             $std->Program    =$request->Program  ??""  ;
@@ -113,6 +115,8 @@ class StudentController extends Controller
             if($request->hasFile('image')){
                 $std->image=$request->image->store('data');
             }
+            $std->save();
+
             $std->save();
             return redirect()->route('students.show',['std'=>$std->id])->with('message',"Student Added Sucessfully");
         }else{

@@ -120,28 +120,28 @@ $bg=[
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="dob">Date Of Birth</label>
-                    <input type="text" name="dob" class="form-control" required id="dob" required
+                    <input type="text" name="dob" class="form-control" id="dob"
                         value="{{ $std->dob }}">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="number" min="1" name="age" class="form-control" required name="age" id="age"
-                        placeholder="Age" required value="{{ $std->age }}">
+                    <input type="number" min="1" name="age" class="form-control"  name="age" id="age"
+                        placeholder="Age"  value="{{ $std->age }}">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="citino">Citizenship No</label>
-                    <input type="text" name="citino" class="form-control" required id="citino"
+                    <input type="text" name="citino" class="form-control"  id="citino"
                         placeholder="Citizenship No" value="{{ $std->citino }}">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="education">Education</label>
-                    <input type="text" name="education" class="form-control" required id="education"
+                    <input type="text" name="education" class="form-control"  id="education"
                         placeholder="Education" value="{{ $std->education }}">
                 </div>
             </div>

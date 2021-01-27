@@ -6,7 +6,6 @@
 @section('content')
 
     <h3>
-
         Daily Record Transaction
     </h3>
     <div class="m-3 p-3 shadow">
