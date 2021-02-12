@@ -1,6 +1,4 @@
-<h3>
-    Due List
-</h3>
+
 <table id="DueList" class="table">
     <tr>
         <th>

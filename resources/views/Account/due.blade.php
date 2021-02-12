@@ -2,11 +2,13 @@
 @section('title','Due Accounts')
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/nepali.datepicker.v3.2.min.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('css/nepali.datepicker.v3.2.min.css')}}"> --}}
 @endsection
 @section('content')
 <input type="hidden" id="today">
-
+<h3>
+    Due List
+</h3>
    <div id="duelist">
 
    </div>
@@ -15,7 +17,7 @@
 <script src="{{asset('assets/bundles/datatablescripts.bundle.js')}}"></script>
 <script src="{{asset('assets/plugins/jquery-datatable/buttons/dataTables.buttons.min.js')}}"></script>
 <script src="{{asset('assets/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{asset('js/nepali.datepicker.v3.2.min.js')}}"></script>
+{{-- <script src="{{asset('js/nepali.datepicker.v3.2.min.js')}}"></script> --}}
 <script>
 
 

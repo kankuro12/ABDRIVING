@@ -15,6 +15,8 @@
     @yield('css')
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/nepali.datepicker.v3.2.min.css')}}">
+
     @include('css')
     <script src="https://kit.fontawesome.com/4ea06e897a.js" crossorigin="anonymous"></script>
 </head>
@@ -103,7 +105,7 @@
                     <h2>@yield('title')</h2>
                     <button type="button" class="btn btn-default waves-effect m-r-20 href"  data-target="{{route('dashboard')}}">Dashboard</button>
                     <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#timesheet">Time Sheet</button>
-                    <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#duelist">Due List</button>
+                    <a href="{{ url('/Account/due') }}" class="btn btn-default waves-effect m-r-20" >Due List</a>
                     <ul class="breadcrumb">
                         @yield('breadcrumb')
                     </ul>
@@ -148,7 +150,6 @@
 </section>
 
 @include('dashboard.timesheet')
-@include('dashboard.duelist')
 
 <!-- Jquery Core Js -->
 <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js -->
@@ -165,9 +166,13 @@
 </script>
 <script src="{{asset('assets\js\pages\ui\notifications.js')}}"></script>
 <script src="{{asset('assets\plugins\bootstrap-notify\bootstrap-notify.js')}}"></script>
-@yield('js')
 <script src="{{asset('assets/bundles/mainscripts.bundle.js')}}"></script>
 <script src="{{asset('js/axios.js')}}"></script>
+<script src="{{asset('js/nepali.datepicker.v3.2.min.js')}}"></script>
+
+@yield('js')
+
+
 
 </body>
 
