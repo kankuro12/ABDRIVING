@@ -83,6 +83,39 @@
                         </tr>
                     </table>
                 </div>
+                <div class="col-md-12 mt-5">
+                    <h6>All Time Extra Payment Transaction :- <strong>{{ $user->name }}</strong></h6>
+                    <hr>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Paid By</th>
+                            <Th>Amount (Rs.)</Th>
+                            <th>Remarks</th>
+                        </tr>
+                        @php
+                            $totextra = 0;
+                        @endphp
+                        @foreach ($extra as $ex)
+                            <tr>
+                                <td>{{ $ex->date }}</td>
+                                <td>{{ $ex->title }}</td>
+                                <td>{{ $ex->payment_by }}</td>
+                                <td>{{ $ex->amount }}</td>
+                                <td>{{ $ex->remarks }}</td>
+                            </tr>
+                            @php
+                                $totextra+=$ex->amount;
+                            @endphp
+                        @endforeach
+                        <tr>
+                            <td colspan="3" class="text-right"><strong> Total </strong></td>
+                            <td colspan="2"><strong>{{$totextra}}</strong></td>
+                        </tr>
+                    </table>
+                </div>
+
             </div>
         </div>
 

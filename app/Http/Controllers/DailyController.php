@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dailytransation;
 use App\Models\Expense;
+use App\Models\Extrapayment;
 use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,14 +59,17 @@ class DailyController extends Controller
            $user = User::where('id',$request->user_id)->first();
            $daily = Payment::where('date',$request->date)->where('user_id',$request->user_id)->get();
            $expense = Expense::where('date',$request->date)->where('user_id',$request->user_id)->get();
-           return view('daily.data',['daily'=>$daily,'date'=>$request->date,'expenses'=>$expense,'user'=>$user]);
+           $extra = Extrapayment::where('date',$request->date)->where('user_id',$request->user_id)->get();
+           return view('daily.data',['daily'=>$daily,'date'=>$request->date,'expenses'=>$expense,'user'=>$user,'extra'=>$extra]);
     }
 
     public function branchReport($id){
         $user = User::where('id',$id)->first();
         $daily = Payment::where('user_id',$id)->get();
         $expense = Expense::where('user_id',$id)->get();
-        return view('daily.see_request',['daily'=>$daily,'expenses'=>$expense,'user'=>$user]);
+        $extra = Extrapayment::where('user_id',$id)->get();
+
+        return view('daily.see_request',['daily'=>$daily,'expenses'=>$expense,'user'=>$user,'extra'=>$extra]);
     }
 
     // public function allAcceptedRequest(Request $request){

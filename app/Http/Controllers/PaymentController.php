@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Student;
 use App\Models\Course;
+use App\Models\Extrapayment;
 use App\Models\Plan;
 use Illuminate\Support\Facades\Auth;
 
@@ -89,5 +90,30 @@ class PaymentController extends Controller
         $id=$plan->course_id;
         $plan->delete();
         return redirect()->route('payment.plan',['course'=>$id]);
+    }
+
+
+    // extra payments
+    public function extraPaymentIndex(){
+        $extra = Extrapayment::latest()->get();
+        return view('extrapay.index',compact('extra'));
+    }
+
+    public function extraPaymentStore(Request $request){
+        $pay = new Extrapayment();
+        $pay->date = $request->date;
+        $pay->title = $request->title;
+        $pay->amount = $request->amount;
+        $pay->payment_by = $request->pay_by;
+        $pay->remarks = $request->remark;
+        $pay->user_id = Auth::user()->id;
+        $pay->save();
+        return redirect()->back()->with('message','Extra payment has been added successully !');
+
+    }
+    public function extraPaymentDelete($id){
+        $ex = Extrapayment::find($id);
+        $ex->delete();
+        return redirect()->back()->with('message','Deleted successfully !');
     }
 }

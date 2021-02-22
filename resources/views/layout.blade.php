@@ -80,6 +80,8 @@
                     {{-- <li><a href="">List</a></li> --}}
                 </ul>
             </li>
+            <li><a href="{{ route('extra.payments') }}"><i class="zmdi zmdi-assignment"></i><span>Extra Payment</span></a></li>
+
             {{-- <li><a href="{{ route('profile.show') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li> --}}
             <li><a href="#"><i class="zmdi zmdi-sign-in"></i><span>
                 <form method="POST" action="{{ route('logout') }}" style="display:inline;">

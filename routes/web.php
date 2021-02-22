@@ -63,6 +63,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         route::get('plan/del/{plan}', 'PaymentController@planDel')->name('payment.plan.del');
     });
 
+    Route::prefix('extra-payment')->name('extra.')->group(function(){
+        Route::get('', 'PaymentController@extraPaymentIndex')->name('payments');
+        Route::post('/create', 'PaymentController@extraPaymentStore')->name('pay.store');
+        Route::get('/delete/{id}', 'PaymentController@extraPaymentDelete')->name('payment.delete');
+
+    });
+
     Route::prefix('slots')->group(function(){
         Route::get('/', 'SlotController@index')->name('slots');
         Route::post('/add', 'SlotController@add')->name('slots.add');
@@ -101,6 +108,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         route::post('/dueload','AccountController@dueload')->name('due.load');
 
     });
+
+
 
     Route::prefix('Expense')->group(function(){
         route::match(['GET','POST'],'expenses','ExpenseController@index')->name('expenses');
