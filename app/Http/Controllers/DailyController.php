@@ -65,7 +65,7 @@ class DailyController extends Controller
 
     public function branchReport($id){
         $user = User::where('id',$id)->first();
-        $daily = Payment::where('user_id',$id)->get();
+        $daily = Payment::where('user_id',$id)->paginate(20);
         $expense = Expense::where('user_id',$id)->get();
         $extra = Extrapayment::where('user_id',$id)->paginate(20);
 

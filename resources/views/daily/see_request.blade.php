@@ -54,6 +54,9 @@
                             <td><strong>{{$total}}</strong></td>
                         </tr>
                     </table>
+                    <div class="d-flex justify-content-center">
+                        {{ $daily->links() }}
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <h6>All Time Expense Transaction :- <strong>{{ $user->name }}</strong></h6>
@@ -82,6 +85,7 @@
                             <td><strong>{{$expTotal}}</strong></td>
                         </tr>
                     </table>
+
                 </div>
                 <div class="col-md-12 mt-5">
                     <h6>All Time Extra Payment Transaction :- <strong>{{ $user->name }}</strong></h6>
