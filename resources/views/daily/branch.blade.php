@@ -7,6 +7,20 @@
     <h3>
         Branch List
     </h3>
+    <h4>Summary of every trasaction.</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>Total Studen Payments (Rs.)</th>
+            <th>Total Extra Payments (Rs.)</th>
+            <th>Total Expenses (Rs.)</th>
+        </tr>
+        <tr>
+            <td>{{ $totalStdPay }}</td>
+            <td>{{ $totalExtraPay }}</td>
+            <td>{{ $totalExpense }}</td>
+        </tr>
+    </table>
+
        <table class="table table-bordered">
         <tr>
             <th>Branch Name</th>

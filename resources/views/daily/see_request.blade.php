@@ -114,6 +114,9 @@
                             <td colspan="2"><strong>{{$totextra}}</strong></td>
                         </tr>
                     </table>
+                    <div class="d-flex justify-content-center">
+                        {{ $extra->links() }}
+                    </div>
                 </div>
 
             </div>

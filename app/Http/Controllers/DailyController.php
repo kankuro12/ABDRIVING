@@ -67,7 +67,7 @@ class DailyController extends Controller
         $user = User::where('id',$id)->first();
         $daily = Payment::where('user_id',$id)->get();
         $expense = Expense::where('user_id',$id)->get();
-        $extra = Extrapayment::where('user_id',$id)->get();
+        $extra = Extrapayment::where('user_id',$id)->paginate(20);
 
         return view('daily.see_request',['daily'=>$daily,'expenses'=>$expense,'user'=>$user,'extra'=>$extra]);
     }
@@ -88,7 +88,11 @@ class DailyController extends Controller
     // }
 
     public function acceptRequest(){
-        return view('daily.branch');
+        $totalStdPay = Payment::sum('amount');
+        $totalExtraPay = Extrapayment::sum('amount');
+        $totalExpense = Expense::sum('amount');
+
+        return view('daily.branch',['totalStdPay'=>$totalStdPay,'totalExtraPay'=>$totalExtraPay,'totalExpense'=>$totalExpense]);
     }
 
 
